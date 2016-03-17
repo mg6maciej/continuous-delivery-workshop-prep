@@ -17,7 +17,7 @@ before_script:
   - adb shell input keyevent 82
 
 after_success:
-  - ./gradlew crashlyticsUploadDistributionDebug
+  - ci/crashlytics.sh
   - mkdir -p app/build/reports/jacoco/test/
   - cp app/build/reports/coverage/debug/report.xml app/build/reports/jacoco/test/jacocoTestReport.xml
   - ./gradlew coveralls

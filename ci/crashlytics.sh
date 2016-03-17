@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIR=$(dirname $0)
+RELEASE_NOTES=$(git log --format="%cn @ "$TRAVIS_BRANCH"
+------
+%B" -n 1 $TRAVIS_COMMIT)
+echo "$RELEASE_NOTES" > $DIR/../crashlytics_release_notes.txt
+./gradlew crashlyticsUploadDistributionDebug
